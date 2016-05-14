@@ -31,11 +31,12 @@ class Sentiment:
         print
         print self.speech_text
 
+        # API info: http://text-processing.com/docs/sentiment.html
         sentiment_resp = requests.post(
             "http://text-processing.com/api/sentiment/", {"text": self.speech_text})
 
         if sentiment_resp.status_code == 200:
-            # Convert
+            # Convert content string to dictionary
             sentiment = json.loads(sentiment_resp.content)
             print
             print "Sentiment label: " + str(sentiment['label'])
